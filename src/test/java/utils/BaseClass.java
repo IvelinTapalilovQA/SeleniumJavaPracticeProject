@@ -4,7 +4,6 @@ import io.github.bonigarcia.wdm.managers.ChromeDriverManager;
 import io.github.bonigarcia.wdm.managers.FirefoxDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -14,22 +13,18 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.Duration;
-import java.time.LocalDate;
 import java.util.Properties;
-import java.util.Random;
-import java.util.random.RandomGenerator;
 
 public class BaseClass {
 
     public WebDriver driver;
     private final Properties prop;
-    private static final String SCREENSHOTS_DIR = System.getProperty("user.dir") + "/src/test/java/resources/screenshots/";
+    private static final String SCREENSHOTS_DIR = System.getProperty("user.dir") + "src/test/resources/screenshots/";
     private static final String CONFIG_PROP_DIR = System.getProperty("user.dir") + "/src/test/java/utils/config.properties";
 
     public BaseClass()  {
