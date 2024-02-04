@@ -28,7 +28,6 @@ public class ShopCreateAccountPage {
     @FindBy(xpath = "//button[@data-link-action='save-customer']")
     WebElement saveBtn;
 
-
     public void clickOnGenderMrRadioBtn(){
         genderMrRadio.click();
     }

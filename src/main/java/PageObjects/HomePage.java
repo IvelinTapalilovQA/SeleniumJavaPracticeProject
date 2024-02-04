@@ -7,8 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HomePage {
 
-    public HomePage(WebDriver driver){;
-
+    public HomePage(WebDriver driver){
         PageFactory.initElements(driver, this);
     }
 

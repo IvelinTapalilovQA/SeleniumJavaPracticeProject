@@ -23,7 +23,6 @@ public class ShopProductModal {
     @FindBy(xpath = "//button[text()='Continue shopping']")
     WebElement continueBtn;
 
-
     public void clickOnCheckoutBtn(){
         wait.until(ExpectedConditions.elementToBeClickable(checkoutBtn));
         checkoutBtn.click();

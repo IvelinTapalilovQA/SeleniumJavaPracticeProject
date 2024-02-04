@@ -26,7 +26,7 @@ public class ShopAddressesPage {
     WebElement continueBtn;
 
     public void enterCity(String city){
-        cityInput.sendKeys("test");
+        cityInput.sendKeys(city);
     }
     public void enterAddress(String address){
         addressInput.sendKeys(address);

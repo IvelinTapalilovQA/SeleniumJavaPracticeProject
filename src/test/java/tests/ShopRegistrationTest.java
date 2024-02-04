@@ -34,6 +34,5 @@ public class ShopRegistrationTest extends BaseClass {
         shopCreateAccountPage.clickOnSaveBtn();
 
         Assert.assertTrue(shopHeaderPage.isSignOutLinkDisplayed());
-
     }
 }

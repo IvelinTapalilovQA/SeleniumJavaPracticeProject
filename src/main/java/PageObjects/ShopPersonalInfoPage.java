@@ -24,7 +24,6 @@ public class ShopPersonalInfoPage {
     @FindBy(name = "continue")
     WebElement continueBtn;
 
-
     public void selectGenderMrRadio() {
         genderMrRadio.click();
     }

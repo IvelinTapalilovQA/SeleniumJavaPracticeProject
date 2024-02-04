@@ -20,7 +20,6 @@ public class ShopLoginPage {
     @FindBy(xpath = "//a[@data-link-action='display-register-form']")
     WebElement noAccountLink;
 
-
     public void enterEmail(String email){
         emailInput.sendKeys(email);
     }
