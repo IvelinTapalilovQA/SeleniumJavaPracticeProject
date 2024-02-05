@@ -6,19 +6,25 @@ import PageObjects.ShopLoginPage;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import utils.excelutils.ReadExcelFile;
 
-public class ShopLoginTest extends BaseClass {
+public class ShopLoginTestExcel extends BaseClass{
 
-    @DataProvider(name = "getUsers")
-    public Object[][] getUsers(){
-        return new Object[][]{
-            {"test47@test.com", "test47"},
-            {"test91@test.com", "test91"}
-        };
+    @DataProvider(name = "getExcelData")
+    public Object[][] getExcelData(){
+        ReadExcelFile readExcelFile = new ReadExcelFile();
+        int rows = readExcelFile.getRowCount(0);
+        Object[][] signInCredentials = new Object[rows][2];
+
+        for (int i = 0; i < rows; i++) {
+            signInCredentials[i][0] = readExcelFile.getExcelData(0, i + 1, 0);
+            signInCredentials[i][1] = readExcelFile.getExcelData(0, i + 1, 1);
+        }
+        return signInCredentials;
     }
 
-    @Test(dataProvider = "getUsers")
-    public void testLogin(String email, String password) {
+    @Test(dataProvider = "getExcelData")
+    public void testLoginExcel(String email, String password) {
         navigateToUrl();
         HomePage homePage = new HomePage(driver);
         homePage.clickOnCloseCookies();

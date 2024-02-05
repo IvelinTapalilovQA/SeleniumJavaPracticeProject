@@ -1,5 +1,8 @@
-package utils;
+package tests;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import io.github.bonigarcia.wdm.managers.ChromeDriverManager;
 import io.github.bonigarcia.wdm.managers.FirefoxDriverManager;
 import org.apache.commons.io.FileUtils;
@@ -13,6 +16,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -24,10 +28,10 @@ public class BaseClass {
 
     public WebDriver driver;
     private final Properties prop;
-    private static final String SCREENSHOTS_DIR = System.getProperty("user.dir") + "src/test/resources/screenshots/";
-    private static final String CONFIG_PROP_DIR = System.getProperty("user.dir") + "/src/test/java/utils/config.properties";
+    private static final String SCREENSHOTS_DIR = System.getProperty("user.dir") + "/target/screenshots";
+    private static final String CONFIG_PROP_DIR = System.getProperty("user.dir") + "/src/test/resources/properties/config.properties";
 
-    public BaseClass()  {
+    public BaseClass() {
         prop = new Properties();
         FileInputStream data = null;
         try {
@@ -43,14 +47,13 @@ public class BaseClass {
     }
 
     @BeforeMethod
-    protected final void setUp(){
+    protected final void setUp() {
         if (prop.getProperty("browser").equals("chrome")) {
             ChromeDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--start-maximized");
             driver = new ChromeDriver(options);
-        }
-        else if (prop.getProperty("browser").equals("firefox")) {
+        } else if (prop.getProperty("browser").equals("firefox")) {
             FirefoxDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
             driver.manage().window().maximize();
@@ -60,14 +63,14 @@ public class BaseClass {
     }
 
     @AfterMethod
-    protected final void tearDown(ITestResult result){
+    protected final void tearDown(ITestResult result) {
         takeScreenshot(result);
         if (driver != null) {
             driver.close();
         }
     }
 
-    public void navigateToUrl(){
+    public void navigateToUrl() {
         driver.get(prop.getProperty("url"));
     }
 
@@ -84,7 +87,7 @@ public class BaseClass {
         }
     }
 
-    public String generateRandomEmail(){
+    public String generateRandomEmail() {
         return RandomStringUtils.randomAlphanumeric(6, 10) + "@test.com";
     }
 }

@@ -3,7 +3,6 @@ package tests;
 import PageObjects.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import utils.BaseClass;
 
 public class ShopCompleteOrderTest extends BaseClass {
 

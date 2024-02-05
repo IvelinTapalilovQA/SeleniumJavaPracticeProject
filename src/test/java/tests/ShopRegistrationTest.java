@@ -6,7 +6,6 @@ import PageObjects.ShopHeaderPage;
 import PageObjects.ShopLoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import utils.BaseClass;
 
 public class ShopRegistrationTest extends BaseClass {
 
